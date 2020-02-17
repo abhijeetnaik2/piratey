@@ -7,13 +7,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: "12.x"
-      - uses: cmgriffing/scully-gh-pages-action@v2
+      - uses: actions/checkout@v1
+      - run: echo "::add-path::/usr/bin"
+      - run: git --version
+      - uses: cmgriffing/scully-gh-pages-action@1
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: gh-pages
